@@ -15,10 +15,6 @@
         <main class="grid min-h-screen place-items-center bg-slate-950/45 px-5 py-10">
             <section class="w-full max-w-xl rounded-[2rem] border border-white/70 bg-blue-100/60 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.24)] backdrop-blur-sm sm:p-8">
                 <div class="text-center">
-                    <p class="text-xs font-bold uppercase tracking-[0.24em] text-cyan-900/70">
-                        Career Search
-                    </p>
-
                     <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
                         Graduate Employer Matcher
                     </h1>
@@ -30,50 +26,62 @@
 
                 <form method="GET" action="/" class="mt-8 space-y-5">
                     <div>
-                        <label for="degree" class="block text-sm font-semibold text-slate-800">
+                        <label for="degree-picker" class="block text-sm font-semibold text-slate-800">
                             Degree
                         </label>
-                        <div class="relative mt-2">
-                            <select
-                                id="degree"
-                                name="degree"
-                                class="w-full appearance-none rounded-2xl border border-white/70 bg-white/80 px-4 py-3.5 pr-12 text-base font-semibold text-slate-950 shadow-sm outline-none transition focus:border-cyan-700 focus:bg-white focus:ring-4 focus:ring-cyan-100/40"
+                        <div class="relative mt-2" data-picker>
+                            <input type="hidden" name="degree" value="{{ request('degree') }}" data-picker-input>
+                            <button
+                                id="degree-picker"
+                                type="button"
+                                aria-expanded="false"
+                                class="flex w-full items-center justify-between gap-4 rounded-2xl border border-white/70 bg-white/80 px-4 py-3.5 text-left text-base font-semibold text-slate-950 shadow-sm outline-none transition hover:bg-white focus:border-cyan-700 focus:bg-white focus:ring-4 focus:ring-cyan-100/40"
+                                data-picker-button
                             >
-                                <option value="">Select your degree</option>
-                                <option value="Computer Science" @selected(request('degree') === 'Computer Science')>Computer Science</option>
-                                <option value="Business" @selected(request('degree') === 'Business')>Business</option>
-                                <option value="Engineering" @selected(request('degree') === 'Engineering')>Engineering</option>
-                                <option value="Mathematics" @selected(request('degree') === 'Mathematics')>Mathematics</option>
-                                <option value="Psychology" @selected(request('degree') === 'Psychology')>Psychology</option>
-                                <option value="Marketing" @selected(request('degree') === 'Marketing')>Marketing</option>
-                            </select>
-                            <span class="pointer-events-none absolute inset-y-2 right-2 grid w-9 place-items-center rounded-xl bg-cyan-900/10 text-cyan-950">
-                                <span class="text-sm">&#9662;</span>
-                            </span>
+                                <span data-picker-label>{{ request('degree') ?: 'Select your degree' }}</span>
+                                <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-cyan-900/10 text-sm text-cyan-950">
+                                    &#9662;
+                                </span>
+                            </button>
+                            <div class="absolute z-20 mt-2 hidden w-full rounded-2xl border border-white/70 bg-white/95 p-2 shadow-xl shadow-slate-950/15 backdrop-blur-md" data-picker-menu>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-500 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="">Select your degree</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Computer Science">Computer Science</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Business">Business</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Engineering">Engineering</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Mathematics">Mathematics</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Psychology">Psychology</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Marketing">Marketing</button>
+                            </div>
                         </div>
                     </div>
 
                     <div>
-                        <label for="area" class="block text-sm font-semibold text-slate-800">
+                        <label for="area-picker" class="block text-sm font-semibold text-slate-800">
                             Area
                         </label>
-                        <div class="relative mt-2">
-                            <select
-                                id="area"
-                                name="area"
-                                class="w-full appearance-none rounded-2xl border border-white/70 bg-white/80 px-4 py-3.5 pr-12 text-base font-semibold text-slate-950 shadow-sm outline-none transition focus:border-cyan-700 focus:bg-white focus:ring-4 focus:ring-cyan-100/40"
+                        <div class="relative mt-2" data-picker>
+                            <input type="hidden" name="area" value="{{ request('area') }}" data-picker-input>
+                            <button
+                                id="area-picker"
+                                type="button"
+                                aria-expanded="false"
+                                class="flex w-full items-center justify-between gap-4 rounded-2xl border border-white/70 bg-white/80 px-4 py-3.5 text-left text-base font-semibold text-slate-950 shadow-sm outline-none transition hover:bg-white focus:border-cyan-700 focus:bg-white focus:ring-4 focus:ring-cyan-100/40"
+                                data-picker-button
                             >
-                                <option value="">Select an area</option>
-                                <option value="London" @selected(request('area') === 'London')>London</option>
-                                <option value="Manchester" @selected(request('area') === 'Manchester')>Manchester</option>
-                                <option value="Birmingham" @selected(request('area') === 'Birmingham')>Birmingham</option>
-                                <option value="Leeds" @selected(request('area') === 'Leeds')>Leeds</option>
-                                <option value="Bristol" @selected(request('area') === 'Bristol')>Bristol</option>
-                                <option value="Glasgow" @selected(request('area') === 'Glasgow')>Glasgow</option>
-                            </select>
-                            <span class="pointer-events-none absolute inset-y-2 right-2 grid w-9 place-items-center rounded-xl bg-cyan-900/10 text-cyan-950">
-                                <span class="text-sm">&#9662;</span>
-                            </span>
+                                <span data-picker-label>{{ request('area') ?: 'Select an area' }}</span>
+                                <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-cyan-900/10 text-sm text-cyan-950">
+                                    &#9662;
+                                </span>
+                            </button>
+                            <div class="absolute z-20 mt-2 hidden w-full rounded-2xl border border-white/70 bg-white/95 p-2 shadow-xl shadow-slate-950/15 backdrop-blur-md" data-picker-menu>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-500 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="">Select an area</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="London">London</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Manchester">Manchester</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Birmingham">Birmingham</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Leeds">Leeds</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Bristol">Bristol</button>
+                                <button type="button" class="w-full rounded-xl px-3 py-2 text-left text-sm font-semibold text-slate-700 transition hover:bg-cyan-900/10 hover:text-cyan-950" data-option value="Glasgow">Glasgow</button>
+                            </div>
                         </div>
                     </div>
 
@@ -86,5 +94,47 @@
                 </form>
             </section>
         </main>
+
+        <script>
+            document.querySelectorAll('[data-picker]').forEach((picker) => {
+                const button = picker.querySelector('[data-picker-button]');
+                const menu = picker.querySelector('[data-picker-menu]');
+                const input = picker.querySelector('[data-picker-input]');
+                const label = picker.querySelector('[data-picker-label]');
+
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('[data-picker-menu]').forEach((openMenu) => {
+                        if (openMenu !== menu) {
+                            openMenu.classList.add('hidden');
+                            openMenu.closest('[data-picker]').querySelector('[data-picker-button]').setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    const isOpening = menu.classList.contains('hidden');
+                    menu.classList.toggle('hidden');
+                    button.setAttribute('aria-expanded', String(isOpening));
+                });
+
+                menu.querySelectorAll('[data-option]').forEach((option) => {
+                    option.addEventListener('click', () => {
+                        input.value = option.value;
+                        label.textContent = option.textContent.trim();
+                        menu.classList.add('hidden');
+                        button.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (event.target.closest('[data-picker]')) {
+                    return;
+                }
+
+                document.querySelectorAll('[data-picker-menu]').forEach((menu) => {
+                    menu.classList.add('hidden');
+                    menu.closest('[data-picker]').querySelector('[data-picker-button]').setAttribute('aria-expanded', 'false');
+                });
+            });
+        </script>
     </body>
 </html>
