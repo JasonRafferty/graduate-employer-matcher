@@ -12,7 +12,7 @@
         class="bg-cover bg-center bg-no-repeat text-slate-950 antialiased"
         style="background-image: url('/images/background.avif');"
     >
-        <main class="grid min-h-screen place-items-center bg-slate-950/45 px-5 py-10">
+        <main class="grid min-h-screen place-items-center bg-slate-950/20 px-5 py-10">
             <section class="w-full max-w-xl rounded-[2rem] border border-white/70 bg-blue-100/60 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.24)] backdrop-blur-sm sm:p-8">
                 <div class="text-center">
                     <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
